@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import "./style.css";
 import React, { useState } from "react";
+import { Todo } from "./types";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]); //todo array storing the todo list
