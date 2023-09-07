@@ -3,7 +3,7 @@ import "./style.css";
 import React, { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]); //todo array storing the todo list
+  const [todos, setTodos] = useState<Todo[]>([]); //todo array storing the todo list
   const [task, setTask] = useState("");
   const [date, setDate] = useState("");
   const [category, setCategory] = useState(""); // For the dropdown menu
@@ -48,11 +48,7 @@ function App() {
       return;
     }
 
-    // Generate a unique ID for the new task
-    // const newId = todos.length + 1;
-
     const newTask = {
-      // id: newId,
       task: task,
       date: date,
       category: category,
