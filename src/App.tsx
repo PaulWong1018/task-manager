@@ -3,8 +3,7 @@ import "./style.css";
 import React, { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  //todo array storing the todo list
+  const [todos, setTodos] = useState([]); //todo array storing the todo list
   const [task, setTask] = useState("");
   const [date, setDate] = useState("");
   const [category, setCategory] = useState(""); // For the dropdown menu
@@ -22,7 +21,7 @@ function App() {
     setDateError(""); // Clear date error
   };
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
     setCategoryError(""); // Clear Category error
   };
