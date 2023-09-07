@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { number } from "zod";
 import "./style.css";
 import React, { useState } from "react";
 
 function App() {
-  const [todos, setTodos] = useState([]); //todo array storing the todo list
+  const [todos, setTodos] = useState<Todo[]>([]);
+  //todo array storing the todo list
   const [task, setTask] = useState("");
   const [date, setDate] = useState("");
   const [category, setCategory] = useState(""); // For the dropdown menu
@@ -17,12 +17,12 @@ function App() {
     setTaskError(""); // Clear task error
   };
 
-  const handleDateChange = (e) => {
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
     setDateError(""); // Clear date error
   };
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory(e.target.value);
     setCategoryError(""); // Clear Category error
   };
@@ -50,10 +50,10 @@ function App() {
     }
 
     // Generate a unique ID for the new task
-    const newId = todos.length + 1;
+    // const newId = todos.length + 1;
 
     const newTask = {
-      id: newId,
+      // id: newId,
       task: task,
       date: date,
       category: category,
