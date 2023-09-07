@@ -12,7 +12,7 @@ function App() {
   const [dateError, setDateError] = useState("");
   const [categoryError, setCategoryError] = useState("");
 
-  const handleInputChange = (e: { target: { value: React.SetStateAction<string> } }) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTask(e.target.value);
     setTaskError(""); // Clear task error
   };
@@ -49,8 +49,11 @@ function App() {
       return;
     }
 
+    // Generate a unique ID for the new task
+    const newId = todos.length + 1;
+
     const newTask = {
-      id: number,
+      id: newId,
       task: task,
       date: date,
       category: category,
@@ -72,7 +75,7 @@ function App() {
     <>
       <h1 className="text-3xl py-5 flex justify-center">Task Management App</h1>
       <div className="flex justify-center space-y-5">
-        <div className="space-y-5">
+        <div className="space-y-2">
           <h3>Title</h3>
           <input className="border-black border-2" type="text" placeholder="Enter a task..." value={task} onChange={handleInputChange} />
           {taskError && <p className="text-red-500">{taskError}</p>}
@@ -84,13 +87,13 @@ function App() {
           <h3>Category</h3>
           <select value={category} onChange={handleCategoryChange} className="border-black border-2">
             <option></option>
-            <option value="groceries">Groceries</option>
-            <option value="utilities">Utilities</option>
-            <option value="entertainment">Entertainment</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="school">School</option>
           </select>
           {categoryError && <p className="text-red-500">{categoryError}</p>}
 
-          <button className="block border-black border-2 p-2" onClick={handleAddTodo}>
+          <button className="bg-blue-400 hover:bg-blue-300 rounded-md block border-black border-2 py-3 px-16" onClick={handleAddTodo}>
             Add
           </button>
         </div>
@@ -116,7 +119,7 @@ function App() {
                 <td className="border-black border-2 py-3 px-8">{todo.date}</td>
                 <td className="border-black border-2 py-3 px-8">{todo.category}</td>
                 <td className="border-black border-2">
-                  <button className="bg-red-400 rounded-md block border-black border-2 py-3 px-8 m-3" onClick={() => handleRemoveTodo(index)}>
+                  <button className="bg-red-400 hover:bg-red-300 rounded-md block border-black border-2 py-3 px-8 m-3" onClick={() => handleRemoveTodo(index)}>
                     Remove
                   </button>
                 </td>
