@@ -2,6 +2,7 @@
 import "./style.css";
 import React, { useState } from "react";
 import { Todo } from "./types";
+import { TextField } from "@mui/material";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]); //todo array storing the todo list
@@ -73,7 +74,8 @@ function App() {
       <div className="flex justify-center space-y-5">
         <div className="space-y-2">
           <h3>Title</h3>
-          <input className="border-black border-2" type="text" placeholder="Enter a task..." value={task} onChange={handleInputChange} />
+          {/* <input className="border-black border-2" type="text" placeholder="Enter a task..." value={task} onChange={handleInputChange} /> */}
+          <TextField id="outlined-basic" label="Enter your task..." variant="outlined" value={task} onChange={handleInputChange} />
           {taskError && <p className="text-red-500">{taskError}</p>}
 
           <h3>Due Date</h3>
